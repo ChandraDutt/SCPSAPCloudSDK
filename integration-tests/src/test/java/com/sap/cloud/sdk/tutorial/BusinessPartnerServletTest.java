@@ -64,18 +64,42 @@ public class BusinessPartnerServletTest {
                 .contentType(ContentType.JSON)
                 .body(jsonValidator_List);
     }
-
+//Below Test is written for Resilience which returns empty list in case of failure,
+//but with Cache, even if ERP is unavailable cache can result the data
+    
+    
+//    @Test
+//    public void testWithFallback() {
+//        // Simulate a failed VDM call with non-existent destination
+//        DestinationAccessor.setLoader((n, o) -> Try.success(dummyDestination));
+//
+//        // Assure an empty list is returned as fallback
+//        when()
+//                .get("/businesspartners")
+//                .then()
+//                .statusCode(200)
+//                .contentType(ContentType.JSON)
+//                .body("", Matchers.hasSize(0));
+//    }
+    
     @Test
-    public void testWithFallback() {
-        // Simulate a failed VDM call with non-existent destination
-        DestinationAccessor.setLoader((n, o) -> Try.success(dummyDestination));
-
-        // Assure an empty list is returned as fallback
+    public void testCache() {
+        // TODO: insert your service URL down below
+        mockUtil.mockDestination(MockDestination.builder(DESTINATION_NAME, URI.create("http://localhost:3000")).build());
         when()
                 .get("/businesspartners")
                 .then()
                 .statusCode(200)
                 .contentType(ContentType.JSON)
-                .body("", Matchers.hasSize(0));
+                .body(jsonValidator_List);
+
+        // Simulate a failed VDM call with non-existent destination
+        DestinationAccessor.setLoader((n, o) -> Try.success(dummyDestination));
+        when()
+                .get("/businesspartners")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body(jsonValidator_List);
     }
 }
