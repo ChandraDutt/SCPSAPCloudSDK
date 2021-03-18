@@ -4,7 +4,8 @@ applications:
 - name: SCPSAPCloudSDKTutorial
   memory: 1024M
   timeout: 300
-  random-route: true
+  routes:
+    - route: sapcloudsdktrial-fa8c4e6etrial.cfapps.eu10.hana.ondemand.com
   path: application/target/SCPSAPCloudSDKTutorial-application.war
   buildpacks:
     - sap_java_buildpack
