@@ -18,3 +18,16 @@ applications:
   - my-xsuaa-sapcloudsdk
   - my-destination-sapcloudsdk
 #  - my-connectivity
+
+- name: approuter-sapcloudsdk
+  routes:
+    - route: approuter-fa8c4e6etrial.cfapps.eu10.hana.ondemand.com
+  path: approuter
+  memory: 128M
+  buildpacks:
+    - nodejs_buildpack
+  env:
+    TENANT_HOST_PATTERN: 'approuter-(.*).cfapps.eu10.hana.ondemand.com'
+    destinations: '[{"name":"app-destination", "url" :"https://sapcloudsdktrial-fa8c4e6etrial.cfapps.eu10.hana.ondemand.com/", "forwardAuthToken": true}]'
+  services:
+    - my-xsuaa-sapcloudsdk
