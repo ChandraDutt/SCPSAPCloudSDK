@@ -13,4 +13,5 @@ Instructions on the mock server can be found at https://sap.github.io/cloud-s4-s
 Create service instances as below in the space you are going to deploy the application, same names are used for bindings in manifest.yml.
 
 cf create-service xsuaa application my-xsuaa-sapcloudsdk
+
 cf create-service destination lite my-destination-sapcloudsdk
