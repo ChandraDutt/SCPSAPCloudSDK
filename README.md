@@ -15,3 +15,18 @@ Create service instances as below in the space you are going to deploy the appli
 cf create-service xsuaa application my-xsuaa-sapcloudsdk
 
 cf create-service destination lite my-destination-sapcloudsdk
+
+xsuaa instance with xs-security.json descriptor:
+
+cf create-service xsuaa application my-xsuaa-sapcloudsdk -c xs-security.json
+
+sapcloudsdktrial-fa8c4e6etrial.cfapps.eu10.hana.ondemand.com
+
+sapcloudsdktrial-fa8c4e6etrial.cfapps.eu10.hana.ondemand.com/api/businesspartners
+
+approuter-fa8c4e6etrial.cfapps.eu10.hana.ondemand.com
+
+approuter-fa8c4e6etrial.cfapps.eu10.hana.ondemand.com/api/businesspartners
+ 
+approuter-fa8c4e6etrial.cfapps.eu10.hana.ondemand.com/debug
+  
