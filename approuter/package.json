@@ -1,5 +1,5 @@
 {
-  "name": "approuter",
+  "name": "approuter-sapcloudsdk",
   "dependencies": {
     "@sap/approuter": "*"
   },

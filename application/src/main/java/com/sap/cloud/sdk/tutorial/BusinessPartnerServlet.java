@@ -11,14 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-
+import javax.servlet.annotation.ServletSecurity;
+import javax.servlet.annotation.HttpConstraint;
 import com.sap.cloud.sdk.cloudplatform.connectivity.DestinationAccessor;
 
 import com.sap.cloud.sdk.s4hana.connectivity.ErpHttpDestination;
 import com.sap.cloud.sdk.s4hana.connectivity.DefaultErpHttpDestination;
 import com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartner;
 
-@WebServlet("/businesspartners")
+@WebServlet("/api/businesspartners")
+@ServletSecurity(@HttpConstraint(rolesAllowed = { "Display" }))
 public class BusinessPartnerServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
